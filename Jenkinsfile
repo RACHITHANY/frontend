@@ -29,7 +29,7 @@ pipeline {
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'aws-credentials'
+                    credentialsId: 'frontend'
                 ]]) {
                     sh '''
                       aws s3 sync build/ s3://$S3_BUCKET --delete
