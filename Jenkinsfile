@@ -7,16 +7,10 @@ pipeline {
   }
 
   stages {
-    stage('Checkout') {
-      steps {
-        git 'https://github.com/RACHITHANY/frontend.git'
-      }
-    }
 
     stage('Build') {
       steps {
         sh '''
-          cd frontend
           npm install
           npm run build
         '''
@@ -26,7 +20,7 @@ pipeline {
     stage('Upload to S3') {
       steps {
         sh '''
-          aws s3 sync frontend/build s3://$S3_BUCKET --delete
+          aws s3 sync build/ s3://$S3_BUCKET --delete
         '''
       }
     }
