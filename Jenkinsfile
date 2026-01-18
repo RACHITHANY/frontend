@@ -2,14 +2,14 @@ pipeline {
   agent any
 
   environment {
-    S3_BUCKET = "my-frontend-devops-app"
-    AWS_REGION = "ap-south-1"
+    S3_BUCKET = "jenkins-static-36d9d0d2"
+    AWS_REGION = "us-east-1"
   }
 
   stages {
     stage('Checkout') {
       steps {
-        git 'https://github.com/your-username/aws-devops-microservices-project.git'
+        git 'https://github.com/RACHITHANY/frontend.git'
       }
     }
 
@@ -35,7 +35,7 @@ pipeline {
       steps {
         sh '''
           aws cloudfront create-invalidation \
-          --distribution-id E123456789 \
+          --distribution-id E2J9QY64PLEQ15 \
           --paths "/*"
         '''
       }
